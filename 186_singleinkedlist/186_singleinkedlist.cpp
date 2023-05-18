@@ -1,18 +1,18 @@
 #include <iostream>
 using namespace std;
 
-struct node{
+struct node{		
 	int noMhs;
 	string name;
-	node* next;
+	node* next;			
 };
 
 node* START = NULL;
 
-void addnode() {
+void addnode() {	
 	int nim;
 	string nama;
-	node* nodeBaru = new node();
+	node* nodeBaru = new node();			
 	cout << "masukan NIM : ";
 	cin >> nim;
 	cout << "masukan Nama : ";
@@ -32,8 +32,8 @@ void addnode() {
 		return;
 	}
 
-	node* previous = START;
-	node* current = START;
+	node* previous = START;	
+	node* current = START;	
 
 	while ((current != NULL) && (nim >= current->noMhs))
 	{
@@ -49,7 +49,7 @@ void addnode() {
 	previous->next = nodeBaru;
 }
 
-bool searchNode(int nim, node* current, node* previous) {
+bool searchNode(int nim, node* current, node* previous) {	
 	previous = START;
 	current = START;
 	while (current != NULL && nim > current->noMhs)
@@ -72,9 +72,9 @@ bool searchNode(int nim, node* current, node* previous) {
 	}
 }
 
-bool deleteNode(int nim) {
-	node* current = START;
-	node* previous = START;
+bool deleteNode(int nim) {		
+	node* current = START;		
+	node* previous = START;		
 	if (searchNode(nim, previous, current) == false)
 		return false;
 	previous->next = current->next;
@@ -83,14 +83,14 @@ bool deleteNode(int nim) {
 	return true;
 }
 
-bool listEmpty() {
+bool listEmpty() {		
 	if (START == NULL)
 		return true;
 	else
 		return false;
 }
 
-void traverse() {
+void traverse() {			
 	if (listEmpty()) {
 		cout << "List Kosong" << endl;
 		system("pause");
@@ -98,7 +98,7 @@ void traverse() {
 		return;
 	}
 	else {
-		node* currentNode = START;
+		node* currentNode = START;		
 		while (currentNode != NULL) {
 			cout << "NIM:" << currentNode->noMhs << ",Nama:" << currentNode->name << endl;
 			currentNode = currentNode->next;
@@ -106,7 +106,7 @@ void traverse() {
 	}
 }
 
-void searchData() {
+void searchData() {			
 	if (listEmpty()) {
 		cout << "List Kosong" << endl;
 		system("pause");
@@ -117,7 +117,7 @@ void searchData() {
 		int nim;
 		cout << "Maukan NIM : ";
 		cin >> nim;
-		node* currentNode = START;
+		node* currentNode = START;		
 		while (currentNode != NULL){
 			if (currentNode->noMhs == nim) {
 				cout << "NIM : " << currentNode->noMhs << ",Nama : " << currentNode->name << endl;
@@ -129,7 +129,7 @@ void searchData() {
 	}
 }
 
-int main() {
+int main() {				
 	int pilihan;
 	do
 	{
@@ -186,5 +186,5 @@ int main() {
 		{
 			cout << "Terjadi kesalahan" << endl;
 		}
-	}
+	} while (pilihan != 5);
 }
