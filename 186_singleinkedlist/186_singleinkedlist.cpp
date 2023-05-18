@@ -1,18 +1,18 @@
 #include <iostream>
 using namespace std;
 
-struct node{		
+struct Node{		
 	int noMhs;
 	string name;
-	node* next;			
+	Node* next;	
 };
 
-node* START = NULL;
+Node* START = NULL;
 
-void addnode() {	
+void addNode() {	
 	int nim;
 	string nama;
-	node* nodeBaru = new node();			
+	Node* nodeBaru = new Node();			
 	cout << "masukan NIM : ";
 	cin >> nim;
 	cout << "masukan Nama : ";
@@ -32,8 +32,8 @@ void addnode() {
 		return;
 	}
 
-	node* previous = START;	
-	node* current = START;	
+	Node* previous = START;	
+	Node* current = START;	
 
 	while ((current != NULL) && (nim >= current->noMhs))
 	{
@@ -49,7 +49,7 @@ void addnode() {
 	previous->next = nodeBaru;
 }
 
-bool searchNode(int nim, node* current, node* previous) {	
+bool searchNode(int nim, Node* current, Node* previous) {	
 	previous = START;
 	current = START;
 	while (current != NULL && nim > current->noMhs)
@@ -73,8 +73,8 @@ bool searchNode(int nim, node* current, node* previous) {
 }
 
 bool deleteNode(int nim) {		
-	node* current = START;		
-	node* previous = START;		
+	Node* current = START;		
+	Node* previous = START;		
 	if (searchNode(nim, previous, current) == false)
 		return false;
 	previous->next = current->next;
@@ -98,7 +98,7 @@ void traverse() {
 		return;
 	}
 	else {
-		node* currentNode = START;		
+		Node* currentNode = START;		
 		while (currentNode != NULL) {
 			cout << "NIM:" << currentNode->noMhs << ",Nama:" << currentNode->name << endl;
 			currentNode = currentNode->next;
@@ -117,7 +117,7 @@ void searchData() {
 		int nim;
 		cout << "Maukan NIM : ";
 		cin >> nim;
-		node* currentNode = START;		
+		Node* currentNode = START;		
 		while (currentNode != NULL){
 			if (currentNode->noMhs == nim) {
 				cout << "NIM : " << currentNode->noMhs << ",Nama : " << currentNode->name << endl;
@@ -137,7 +137,7 @@ int main() {
 		{
 			cout << "1. Tambah Data" << endl;
 			cout << "2. Hapus Data" << endl;
-			cout << "3. Tambpilkan Data" << endl;
+			cout << "3. Tampilkan Data" << endl;
 			cout << "4. Cari Data" << endl;
 			cout << "5. Keluar" << endl;
 			cout << "6. pilihan : ";
@@ -145,7 +145,7 @@ int main() {
 			switch (pilihan)
 			{
 			case 1:
-				addnode();
+				addNode();
 				cout << "Data Berhasil Ditemukan" << endl;
 				system("pause");
 				system("cls");
